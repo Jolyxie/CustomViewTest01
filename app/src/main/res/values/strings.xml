@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CustomTest1</string>
+    <string name="title_text">CustomView</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.android.jolyxie.customtest1.MainActivity"
+    xmlns:CustomView="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.android.jolyxie.customtest1.CustomView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_centerInParent="true"
+        CustomView:TitleTextColor="@color/red"
+        CustomView:TitleTextSize="22sp"
+        CustomView:TitleText="@string/title_text"/>
+</RelativeLayout>
