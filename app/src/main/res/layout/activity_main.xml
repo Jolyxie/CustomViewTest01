@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.android.jolyxie.customtest1.MainActivity"
     xmlns:CustomView="http://schemas.android.com/apk/res-auto"
+    xmlns:CustomImageView="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -14,4 +15,14 @@
         CustomView:TitleTextColor="@color/red"
         CustomView:TitleTextSize="22sp"
         CustomView:TitleText="@string/title_text"/>
+
+    <com.android.jolyxie.customtest1.CustomImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        CustomImageView:image="@mipmap/ic_launcher"
+        CustomImageView:imageScaleType="center"
+        CustomImageView:textColor="@color/black"
+        CustomImageView:textSize="22sp"
+        CustomImageView:titleTextImage="@string/title_text"/>
 </RelativeLayout>
