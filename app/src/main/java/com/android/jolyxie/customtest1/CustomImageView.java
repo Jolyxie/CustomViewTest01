@@ -11,7 +11,6 @@ import android.graphics.Rect;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 /**
