@@ -23,4 +23,13 @@
         <attr name="circleWidth" format="dimension"/>
         <attr name="speed" format="integer"/>
     </declare-styleable>
+	
+	<declare-styleable name="CustomVolumeControl">
+        <attr name="finishedColor" format="color"/>
+        <attr name="unfinishedColor" format="color"/>
+        <attr name="imageView" format="reference"/>
+        <attr name="circle_Width" format="dimension"/>
+        <attr name="dotCount" format="integer"/>
+        <attr name="splitSize" format="integer"/>
+    </declare-styleable>
 </resources>

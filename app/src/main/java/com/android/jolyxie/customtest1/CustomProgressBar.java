@@ -20,6 +20,8 @@ public class CustomProgressBar extends View {
     private int mSecondColor;
     private int circleWidth;
     private int speed;
+    private int process         = 0;
+    private boolean isNext      = false;
 
     private Paint mPaint;
 
@@ -40,18 +42,53 @@ public class CustomProgressBar extends View {
         speed           = a.getInteger(R.styleable.CustomProgressBar_speed,2);
         a.recycle();
         mPaint          = new Paint();
+
+        //当view处于不显示的状态。或者先显示，再设置不显示的情况。线程依旧会运行。而且应用关闭后线程依旧会运行。
+        //我模仿你的代码后，我使用属性动画（也是学你的）解决这个问题。
+       // 我重写了onVisibilityChanged() onAttachedToWindow()和onDetachedFromWindow()三个方法，分别在设置显示状态，绑定，解除绑定的时候调用开始或结束动画。这样就不会有内存泄露了
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    process+=5;
+                    if(process == 360){
+                        process = 0;
+                        isNext = !isNext;
+                    }
+                    postInvalidate();
+                    try{
+                        Thread.sleep(speed);
+                    }catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
+
+    /*
+    * 在onDraw中不能经常new，不然会占用太多内存，造成手机卡顿。
+    * */
 
     @Override
     protected void onDraw(Canvas canvas) {
         int centre = getWidth() / 2; // 获取圆心的x坐标
-        int radius = centre - circleWidth;// 半径
+        int radius = centre - circleWidth/2;// 半径
         mPaint.setStrokeWidth(circleWidth); // 设置圆环的宽度
         mPaint.setAntiAlias(true); // 消除锯齿
         mPaint.setStyle(Paint.Style.STROKE); // 设置空心
-        mPaint.setColor(mFirstColor);
-        Log.e("jolyxie","00000000000000000>>"+centre+"<---->"+circleWidth+"<--->"+radius);
         RectF oval = new RectF(centre - radius, centre - radius, centre + radius, centre + radius); // 用于定义的圆弧的形状和大小的界限
-        canvas.drawArc(oval,-90,60,false,mPaint);
+
+        if(isNext) {
+            mPaint.setColor(mFirstColor);
+            canvas.drawCircle(centre,centre,radius,mPaint);
+            mPaint.setColor(mSecondColor);
+            canvas.drawArc(oval, -90, process, false, mPaint);
+        }else{
+            mPaint.setColor(mSecondColor);
+            canvas.drawCircle(centre,centre,radius,mPaint);
+            mPaint.setColor(mFirstColor);
+            canvas.drawArc(oval, -90, process, false, mPaint);
+        }
     }
 }
