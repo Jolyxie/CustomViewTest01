@@ -53,4 +53,38 @@
         CustomVolumeControl:imageView="@mipmap/ic_launcher"
         CustomVolumeControl:splitSize="20"/>
 
+    <com.android.jolyxie.customtest1.CustomViewGroup
+        android:layout_width="200dp"
+        android:layout_height="200dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:text="@string/hello"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:text="@string/name"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:text="@string/age"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:text="@string/job"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+
+    </com.android.jolyxie.customtest1.CustomViewGroup>
+
 </RelativeLayout>

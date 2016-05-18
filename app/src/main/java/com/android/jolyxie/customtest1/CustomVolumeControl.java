@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -79,8 +80,8 @@ public class CustomVolumeControl extends View {
         mRect.bottom    = (int)(mRect.left + Math.sqrt(2)*realRadius);
         if(imageView.getWidth() < Math.sqrt(2) * realRadius){
             mRect.left = mRect.left + (int)(realRadius*Math.sqrt(2)/2) - imageView.getWidth()/2;
-            mRect.top  = mRect.left + (int)(realRadius*Math.sqrt(2)/2) - imageView.getWidth()/2;
-            mRect.bottom = mRect.left + imageView.getWidth();
+            mRect.top  = mRect.top + (int)(realRadius*Math.sqrt(2)/2) - imageView.getHeight()/2;
+            mRect.bottom = mRect.top + imageView.getWidth();
             mRect.right  = mRect.left + imageView.getHeight();
         }
         canvas.drawBitmap(imageView,null,mRect,mPaint);
